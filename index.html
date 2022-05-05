@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+@font-face {
+  font-family: font_1;
+  src: url(bfa/fonts/font_1.ttf);
+}
+@font-face {
+  font-family: font_2;
+  src: url(bfa/fonts/font_2.ttf);
+}
+@font-face {
+  font-family: font_3;
+  src: url(bfa/fonts/font_3.ttf);
+}
+
+.title {
+  font-size: 20vw;
+  color: #a6b8c2;
+  letter-spacing: -0.5px;
+  font-family: font_1, sans-serif;
+  word-spacing: 2x;
+  text-decoration: none;
+}
+.title:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 3vh;
+  font-family: font_2, sans-serif;
+}
+.year {
+  font-size: 10vh;
+  color: #f5f3f0;
+  letter-spacing: -0.5px;
+  font-family: font_2, sans-serif;
+  word-spacing: 2x;
+  text-decoration: none;
+}
+.info {
+  font-size: 5vh;
+  color: #f5f3f0;
+  letter-spacing: -0.5px;
+  font-family: font_2, sans-serif;
+  word-spacing: 2x;
+  text-decoration: none;
+}
+
+</style>
+</head>
+<body style="background-color:#f5f3f0";>
+  <div id="bfa_bg" style="position: fixed; display: none; top: 0; left: 0; width: 50%; height: 100%; background-color: #a6b8c2"></div>
+  <a class="title" id="bfa" href="bfa/index.html" style="position: fixed; top: 40%; right: 51%; transform: translate(0, -50%);">BFA</a>
+  <p class="year" id="year_left" style="position: fixed; display: none; top: 0; right: 51%; transform: translate(0, -50%);">RUSKIN 2022</p>
+  <p class="info" id="info_left" style="position: fixed; display: none; text-align: right; bottom: 0; right: 51%; transform: translate(0, -50%);">17th June<br>7:00pm - 10:00pm</p>
+  <div id="mfa_bg" style="position: fixed; display: none; top: 0; right: 0; width: 50%; height: 100%; background-color: #a6b8c2"></div>
+  <a class="title" id="mfa" style="position: fixed; top: 40%; left: 51%; transform: translate(0, -50%);">MFA</a>
+  <p class="year" id="year_right" style="position: fixed; display: none; top: 0; left: 51%; transform: translate(0, -50%);">RUSKIN 2022</p>
+  <p class="info" id="info_right" style="position: fixed; display: none; bottom: 0; left: 51%; transform: translate(0, -50%);">17th June<br>7:00pm - 10:00pm</p>
+  <script>
+    document.addEventListener('mousemove', function (event) {
+      var x = event.pageX / window.innerWidth;
+      if (x < 0.5) {
+        document.getElementById("bfa").style.color = "#f5f3f0";
+        document.getElementById("mfa").style.color = "#a6b8c2";
+        document.getElementById("bfa_bg").style.display = "block";
+        document.getElementById("mfa_bg").style.display = "none";
+        document.getElementById("year_left").style.display = "block";
+        document.getElementById("year_right").style.display = "none";
+        document.getElementById("info_left").style.display = "block";
+        document.getElementById("info_right").style.display = "none";
+      } else {
+        document.getElementById("bfa").style.color = "#a6b8c2";
+        document.getElementById("mfa").style.color = "#f5f3f0";
+        document.getElementById("bfa_bg").style.display = "none";
+        document.getElementById("mfa_bg").style.display = "block";
+        document.getElementById("year_left").style.display = "none";
+        document.getElementById("year_right").style.display = "block";
+        document.getElementById("info_left").style.display = "none";
+        document.getElementById("info_right").style.display = "block";
+      }
+    });
+  </script>
+</body>
