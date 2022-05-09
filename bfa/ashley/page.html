@@ -2,7 +2,78 @@
 <html>
 <head>
 <style>
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f5f2f0;
+}
+@font-face {
+  font-family: font_1;
+  font-style: normal;
+  src: url(font_1.ttf);
+}
+@font-face {
+  font-family: font_2;
+  font-style: normal;
+  src: url(font_2.ttf);
+}
+@font-face {
+  font-family: font_2;
+  font-style: italic;
+  src: url(font_2-italic.ttf);
+}
+.name {
+  font-size: 10vh;
+  color: #eb4934;
+  line-height: 1;
+  text-align: center;
+  font-family: font_1;
+  text-decoration: none;
+  transform: rotate(90deg);
+  z-index: 3;
+}
+.link {
+  font-size: 3.5vh;
+  color: #eb4934;
+  line-height: 1;
+  text-align: center;
+  font-family: font_1;
+  text-decoration: none;
+  z-index: 3;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.caption {
+  font-size: 2.5vh;
+  color: #20292e;
+  line-height: 1.5;
+  font-family: font_2;
+  text-decoration: none;
+  z-index: 3;
+}
+.image {
+  position: absolute;
+  height: 30%;
+  width: auto;
+  z-index: 2;
+}
 </style>
 </head>
 <body>
+  <div style="position: fixed; left: -18vh; top: 16%;">
+    <p class="name">ashley cluer<p>
+  </div>
+  <img src="1.jpg" class="image" style="top:2%; left:18vh;">
+  <p class="caption" style="position:absolute; text-align: left; left: 60vh; top: 2%">1. I’m Not Really Sure Yet (2022)<br><i>papier mache, plywood, aluminium</i></p>
+  <img src="2.jpg" class="image" style="bottom:12%; left:18vh;">
+  <p class="caption" style="position:absolute; text-align: left; left: 18vh; bottom: 42%">2. Don't Let Go V2 (2021)<br><i>cement, steel, plywood</i></p>
+  <img src="3.jpg" class="image" style="top:2%; right:2vh;">
+  <p class="caption" style="position:absolute; text-align: right; right: 2vh; top: 32%">3. Don’t Like What You See? Well Neither Do We (2022)<br><i>aluminium, steel</i></p>
+  <img src="4.jpg" class="image" style="bottom:12%; right:2vh;">
+  <p class="caption" style="position:absolute; text-align: right; right: 48vh; bottom: 12%">4. Frank and His Sister Louise (2022)<br><i>wire, cement, steel</i></p>
+  <a href="https://www.instagram.com/ashleycluer/" class="link" style="position:absolute; text-align: left; left: 18vh; bottom: 4%;">@ashleycluer</a>
+  <p class="caption" style="position: absolute; top: 100%; margin-right: 5vh; left: 70vh;">
+Growing up in London Ashley has been surrounded by rudimentary industrial materials whose banality enabled her imagination to play. The life and stories she prescribes to these substances is the reason that her sculptures highlight the beauty she finds in things otherwise ignored.<br><br>Her work is centred within materiality as the texture, form and appearance of her sculptures become an integral resource that enables a viewer to connect with the piece using all of their senses. In particular the cement sculptures are carved by her with only a chisel and mallet, the wooden bases that support these works are personally selected, sawed and sanded having been recycled from older sculptures. Likewise, her larger-scale more bombastic works are formed from this unique process of making which results in her works ability to express her creative desires.<br><br></p>
+  <img src="portrait.jpg" class="image" style="top:105%; left:18vh;">
 </body>
