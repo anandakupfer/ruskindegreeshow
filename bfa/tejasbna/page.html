@@ -2,7 +2,114 @@
 <html>
 <head>
 <style>
+body {
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+  font-family: font_1;
+  src: url(font_1.ttf);
+}
+.link {
+  position: absolute;
+  width: 100%;
+  font-size: 1.5vw;
+  text-align: center;
+  color: white;
+  font-family: font_1;
+  top: calc(30vh + 7vw);
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.image {
+  position: fixed;
+  width: calc(50vw - 3vh);
+  display:none;
+  opacity: 0;
+  height: 96%;
+  left: 2vh;
+  top: 2vh;
+  object-fit: contain;
+}
 </style>
 </head>
 <body>
+  <div style="position: fixed; width: calc(50vw - 3vh); height: 96vh; right: 2vh; top: 2vh; background-color: #d21e1e;">
+    <p style="position: absolute; width: 100%; font-size: 3vw; text-align: center; color: black; font-family: font_1; top: 30%;">Tejasbna Sehdev</p>
+    <a href="mailto:tejasbna@gmail.com" class="link">tejasbna@gmail.com</p>
+  </div>
+  <img src="1.png" style="display: block; opacity: 1;" class="image" id="1">
+  <img src="2.png" class="image" id="2">
+  <img src="3.png" class="image" id="3">
+  <img src="4.png" class="image" id="4">
+  <img src="5.png" class="image" id="5">
+  <img src="6.png" class="image" id="6">
+  <img src="7.png" class="image" id="7">
+  <img src="8.png" class="image" id="8">
+  <script>
+  function fadein(element) {
+    element.style.opacity = 0;
+    var tick = function () {
+      element.style.opacity = +element.style.opacity + 0.02;
+      if (+element.style.opacity < 1) {
+        (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+      }
+    };
+    tick();
+  }
+  function fadeout(element) {
+    element.style.opacity = 1;
+    var tick = function () {
+      element.style.opacity = +element.style.opacity - 0.02;
+      if (+element.style.opacity > 0) {
+        (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+      }
+    };
+    tick();
+  }
+  function dissolve(a, b) {
+    fadein(document.getElementById(b));
+    document.getElementById(b).style.display = "block";
+    fadeout(document.getElementById(a));
+    setTimeout(() => { document.getElementById(a).style.display = "none"; }, 1000);
+  }
+
+  let index = 0;
+  setTimeout(slide, 4000);
+
+  function slide() {
+    index++;
+    console.log(index);
+    if (index > 8) {index = 1}
+    switch (index) {
+      case 1:
+        dissolve("1", "2");
+        break;
+      case 2:
+        dissolve("2", "3");
+        break;
+      case 3:
+        dissolve("3", "4");
+        break;
+      case 4:
+        dissolve("4", "5");
+        break;
+      case 5:
+        dissolve("5", "6");
+        break;
+      case 6:
+        dissolve("6", "7");
+        break;
+      case 7:
+        dissolve("7", "8");
+        break;
+      case 8:
+        dissolve("8", "1");
+        break;
+    }
+    setTimeout(slide, 6000);
+  }
+  </script>
 </body>
