@@ -33,7 +33,6 @@ body {
   text-align: center;
   font-family: font_1;
   text-decoration: none;
-  z-index: 3;
 }
 .link {
   font-size: 2vw;
@@ -42,7 +41,6 @@ body {
   text-align: center;
   font-family: font_1;
   text-decoration: none;
-  z-index: 3;
 }
 .link:hover {
   text-decoration: underline;
@@ -53,7 +51,6 @@ body {
   line-height: 1.5;
   font-family: font_3;
   text-decoration: none;
-  z-index: 3;
 }
 .caption {
   font-size: 2vh;
@@ -61,7 +58,17 @@ body {
   line-height: 1.5;
   font-family: font_2;
   text-decoration: none;
-  z-index: 3;
+}
+.lb_caption {
+  position: fixed;
+  font-size: 3vh;
+  color: #20292e;
+  line-height: 1.5;
+  font-family: font_2;
+  text-decoration: none;
+  width: 100%;
+  text-align: center;
+  top: 70%;
 }
 .image {
   position: absolute;
@@ -69,7 +76,17 @@ body {
   width: auto;
   margin-right: 4vw;
   margin-left: 4vw;
-  z-index: 2;
+  cursor: pointer;
+}
+.lb_image {
+  position: fixed;
+  height: 50%;
+  width: auto;
+  margin-right: 4vw;
+  margin-left: 4vw;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
 }
 </style>
 </head>
@@ -79,16 +96,54 @@ body {
   </div>
   <p class="text" style="position: absolute; top: 25%; margin-right: 5vw; left: 50vw;">
 Growing up in London Ashley has been surrounded by rudimentary industrial materials whose banality enabled her imagination to play. The life and stories she prescribes to these substances is the reason that her sculptures highlight the beauty she finds in things otherwise ignored.<br><br>Her work is centred within materiality as the texture, form and appearance of her sculptures become an integral resource that enables a viewer to connect with the piece using all of their senses. In particular the cement sculptures are carved by her with only a chisel and mallet, the wooden bases that support these works are personally selected, sawed and sanded having been recycled from older sculptures. Likewise, her larger-scale more bombastic works are formed from this unique process of making which results in her works ability to express her creative desires.<br><br></p>
-  <img src="portrait.jpg" class="image" style="top:29%; left:1vw; width: 40%; height: auto;">
+  <img src="portrait.jpg" class="image" style="top:29%; left:1vw; width: 40%; height: auto; cursor: default;">
   <div style="position: absolute; width: 100vw; height: 100vh; top: 95vh;">
-    <img src="1.jpg" class="image" style="top:2%; left: 50%;">
+    <img src="1.jpg" class="image" id="1" style="top:2%; left: 50%;">
     <p class="caption" style="position:absolute; text-align: center;; top: 35%; left: calc(54vw + 7vh);">&lsquo;I’m Not Really Sure Yet&rsquo; (2022)<br><i>papier mache, plywood, aluminium</i></p>
-    <img src="2.jpg" class="image" style="top:46%; left:50%; height: 36%;">
+    <img src="2.jpg" class="image" id="2" style="top:46%; left:50%; height: 36%;">
     <p class="caption" style="position:absolute; text-align: center; top:81%; left: calc(54vw + 7vh);">&lsquo;Look Mum, No Hands!&rsquo; (2021)<br><i>cement, steel, plywood</i></p>
-    <img src="3.jpg" class="image" style="top:46%; right:50%; height: 35.5%;">
+    <img src="3.jpg" class="image" id="3" style="top:46%; right:50%; height: 35.5%;">
     <p class="caption" style="position:absolute; text-align: center; top:81%; right: calc(54vw + 0vh);">&lsquo;Don’t Like What You See? Well Neither Do We&rsquo; (2022)<br><i>aluminium, steel</i></p>
-    <img src="4.jpg" class="image" style="top: 2%; right: 50%;">
+    <img src="4.jpg" class="image" id="4" style="top: 2%; right: 50%;">
     <p class="caption" style="position:absolute; text-align: center; top: 35%; right: calc(54vw + 8vh);">&lsquo;Frank and His Sister Louise&rsquo; (2021)<br><i>wire, cement, steel</i></p>
     <a href="https://www.instagram.com/ashleycluer/" class="link" style="position:absolute; text-align: center; width: 100%; bottom: 4%;">Contact: @ashleycluer</a>
   </div>
+  <div id="lightbox" style="display: none;">
+    <div style="position: fixed; width: 100%; height: 100%; background-color: white; opacity: 0.9;"></div>
+    <img src="x.png" onclick="clear_window()" style="position: fixed; width: 40px; height: 40px; left: 20px; top: 20px; cursor: pointer;">
+    <div id="img_1" style="display: none;">
+      <img src="1.jpg" class="lb_image">
+      <p class="lb_caption">&lsquo;I’m Not Really Sure Yet&rsquo; (2022)<br><i>papier mache, plywood, aluminium</i></p>
+    </div>
+    <div id="img_2" style="display: none;">
+      <img src="2.jpg" class="lb_image">
+      <p class="lb_caption">&lsquo;Look Mum, No Hands!&rsquo; (2021)<br><i>cement, steel, plywood</i></p>
+    </div>
+    <div id="img_3" style="display: none;">
+      <img src="3.jpg" class="lb_image">
+      <p class="lb_caption">&lsquo;Don’t Like What You See? Well Neither Do We&rsquo; (2022)<br><i>aluminium, steel</i></p>
+    </div>
+    <div id="img_4" style="display: none;">
+      <img src="4.jpg" class="lb_image">
+      <p class="lb_caption">&lsquo;Frank and His Sister Louise&rsquo; (2021)<br><i>wire, cement, steel</i></p>
+    </div>
+  </div>
+  <script>
+  document.getElementById("1").addEventListener("click", function() { load_window("1") }, false);
+  document.getElementById("2").addEventListener("click", function() { load_window("2") }, false);
+  document.getElementById("3").addEventListener("click", function() { load_window("3") }, false);
+  document.getElementById("4").addEventListener("click", function() { load_window("4") }, false);
+
+  function load_window(id) {
+    document.getElementById("lightbox").style.display = "block";
+    document.getElementById("img_" + id).style.display = "block";
+  }
+  function clear_window() {
+    document.getElementById("lightbox").style.display = "none";
+    document.getElementById("img_1").style.display = "none";
+    document.getElementById("img_2").style.display = "none";
+    document.getElementById("img_3").style.display = "none";
+    document.getElementById("img_4").style.display = "none";
+  }
+  </script>
 </body>
