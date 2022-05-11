@@ -105,22 +105,18 @@ body {
       <p class="caption" style="line-height: 1; font-size: 1.4vw;">Stairs (2021)<br><i>MDF, dried mushrooms, soap, broken glasses, beads, hessian, plaster, studio dust, sponge, Elliot’s Christmas soap (since returned), tiles, broken porcelain duck, 1 feather, resin, dried flower, screws, candles, wig, metal candlestick holder, unicorn stickers, clay, mouldy pumpkin, hot glue, microwaved soap, gold chain, decoupage teddy, jars, cuticle brush</i></p>
     </div>
     <div id="7" class="container">
-      <img src="spinner.gif" class="image">
-      <p class="caption">Candle Spinner (2022)<br><i>perspex, silver chain, candles, lazy susan bearing</i></p>
-    </div>
-    <div id="8" class="container">
       <img src="bath.jpg" class="image">
       <p class="caption">Bath (2021)<br><i>MDF, tiles, grout, pink dye, water, copper, glasses, resin ducks and limes, window panels, pink chalk</i></p>
     </div>
-    <div id="9" class="container">
+    <div id="8" class="container">
       <img src="vitrines.png" class="image">
       <p class="caption">Green Vitrine (2021)<br><i>perspex, plaster, barbie nails, fluorescent green dyed water, bin bags, alphabet beads, tea lights, soil, wood</i></p>
     </div>
-    <div id="10" class="container">
+    <div id="9" class="container">
       <img src="sand witch.jpg" class="image">
       <p class="caption">Sand Witch (2022)<br><i>bread, jam, peanut butter, knives</i></p>
     </div>
-    <div id="11" class="container">
+    <div id="10" class="container">
       <img src="green.png" class="image">
       <p class="caption">It's Not Easy Being Green (2021)<br><i>concrete, unicorn stickers, grass, soil</i></p>
     </div>
@@ -168,7 +164,7 @@ body {
   setTimeout(next_slide, 6000);
 
   function next_slide() {
-    var next = (index + 12) % 11;
+    var next = (index + 11) % 10;
     dissolve((index + 1).toString(), (next + 1).toString());
     index = next;
     setTimeout(next_slide, 6000);
