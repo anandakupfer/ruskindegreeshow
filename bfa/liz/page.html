@@ -2,7 +2,176 @@
 <html>
 <head>
 <style>
+body {
+  border: 0;
+  padding: 0;
+  background-color: white;
+}
+@font-face {
+  font-family: font_1;
+  src: url(font_1.ttf);
+}
+@font-face {
+  font-family: font_2;
+  src: url(font_2.ttf);
+}
+.image {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  left: 10%;
+  top: 10%;
+  object-fit: contain;
+}
+.container {
+  display: none;
+  opacity: 0;
+}
+.caption {
+  position: absolute;
+  transform: translate(0, 100%);
+  left: 22vw;
+  width: 39vw;
+  line-height: 1.5;
+  font-family: font_2;
+  font-size: 1.5vw;
+  bottom: 2vw;
+  z-index: 2;
+  color: #cc6e96;
+}
+.text {
+  position: absolute;
+  transform: translate(0, 100%);
+  left: 20vw;
+  width: 60vw;
+  line-height: 1.5;
+  font-family: font_1;
+  font-size: 1.5vw;
+  top: 63vw;
+  z-index: 2;
+  color: black;
+}
+.name {
+  position: absolute;
+  transform: translate(0, 100%);
+  left: 25vw;
+  width: 60vw;
+  line-height: 1;
+  font-family: font_2;
+  font-size: 8vw;
+  top: -10vw;
+  z-index: 2;
+  color: #cc6e96;
+}
+.link {
+  font-family: font_2;
+  font-size: 1.5vw;
+  letter-spacing: -0.5px;
+  line-height: 1.5;
+  text-decoration: none;
+  color: black
+}
+.link:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
+  <img src="background.jpg" style="position: absolute; width: 100%; top: 0; left: 0; opacity: 0.8;">
+  <div style="position: absolute; width: 70vw; height: 55vw; top: 16vw; left: 50%; transform: translate(-50%, 0);">
+    <div style="position: absolute; background-color: #e07ba6; width: 82%; height: 82%; left: 9%; top: 9%;"></div>
+    <div id="1">
+      <img src="painting.jpg" style="display:block; opacity: 1;" class="image">
+      <p class="caption">Teddy painting (2021)</p>
+    </div>
+    <div id="2" class="container">
+      <img src="grin.jpg" class="image">
+      <p class="caption">I woke up like this (2022)<br><i>pink dye, clear bin bags, fan</i></p>
+    </div>
+    <div id="3" class="container">
+      <img src="teddies.jpg" class="image">
+      <p class="caption">Untitled (2021)<br><i>Mum's Car, bin bags, USB fans</i></p>
+    </div>
+    <div id="4" class="container">
+      <img src="chains.jpg" class="image">
+      <p class="caption">Gummy chains (2021)<br><i>PVC, glitter, rainbow dyed water, valves</i></p>
+    </div>
+    <div id="5" class="container">
+      <img src="ducks.jpg" class="image">
+      <p class="caption">Organised Religion for Ducks (2021)</p>
+    </div>
+    <div id="6" class="container">
+      <img src="step.jpg" class="image">
+      <p class="caption" style="line-height: 1; font-size: 1.4vw;">Stairs (2021)<br><i>MDF, dried mushrooms, soap, broken glasses, beads, hessian, plaster, studio dust, sponge, Elliot’s Christmas soap (since returned), tiles, broken porcelain duck, 1 feather, resin, dried flower, screws, candles, wig, metal candlestick holder, unicorn stickers, clay, mouldy pumpkin, hot glue, microwaved soap, gold chain, decoupage teddy, jars, cuticle brush</i></p>
+    </div>
+    <div id="7" class="container">
+      <img src="spinner.gif" class="image">
+      <p class="caption">Candle Spinner (2022)<br><i>perspex, silver chain, candles, lazy susan bearing</i></p>
+    </div>
+    <div id="8" class="container">
+      <img src="bath.jpg" class="image">
+      <p class="caption">Bath (2021)<br><i>MDF, tiles, grout, pink dye, water, copper, glasses, resin ducks and limes, window panels, pink chalk</i></p>
+    </div>
+    <div id="9" class="container">
+      <img src="vitrines.png" class="image">
+      <p class="caption">Green Vitrine (2021)<br><i>perspex, plaster, barbie nails, fluorescent green dyed water, bin bags, alphabet beads, tea lights, soil, wood</i></p>
+    </div>
+    <div id="10" class="container">
+      <img src="sand witch.jpg" class="image">
+      <p class="caption">Sand Witch (2022)<br><i>bread, jam, peanut butter, knives</i></p>
+    </div>
+    <div id="11" class="container">
+      <img src="green.png" class="image">
+      <p class="caption">It's Not Easy Being Green (2021)<br><i>concrete, unicorn stickers, grass, soil</i></p>
+    </div>
+    <img src="shroom cutout.png" style="position: absolute; width: 18%; left: 0; top: 0;">
+    <img src="bread cutout.png" style="position: absolute; width: 22%; right: 0; top: 0;">
+    <img src="chains cutout.png" style="position: absolute; width: 28%; left: 0; bottom: 0;">
+    <img src="dog cutout.png" style="position: absolute; width: 15%; right: 0; bottom: 2vh;">
+  </div>
+  <div style="position: absolute; left: 2vw; top: 2vw;">
+    <a class="link" href="https://www.instagram.com/liz.jdv.art/">@liz.jdv.art</a><br><a class="link" href="mailto:lizdavies271@gmail.com">lizdavies271@gmail.com</a>
+  </div>
+  <p class="name">Liz Davies</p>
+  <p class="text">Liz Davies is a spore. She scavenges hoards of objects and materials from the woods, skips, unwilling housemates, and the discount bins of charity shops. She combines the bucolic and the industrial, uncarefully considering the flux of object/story, finding joy in disappointment, uselessness over utility, and silliness over substance. Her work is about crappy makeovers, y2k, Yassification and the excess. She disperses slowly and steadily, resulting in at least 5 yearly emails regarding blocked fire exits, a leaky bath, and mouldy bread.</p>
+  <img src="ducks cutout.png" style="position: absolute; width: 10%; left: 50%; top: 180vh; transform: translate(-50%);">
+
+  <script>
+  function fadein(element) {
+    element.style.opacity = 0;
+    var tick = function () {
+      element.style.opacity = +element.style.opacity + 0.02;
+      if (+element.style.opacity < 1) {
+        (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+      }
+    };
+    tick();
+  }
+  function fadeout(element) {
+    element.style.opacity = 1;
+    var tick = function () {
+      element.style.opacity = +element.style.opacity - 0.02;
+      if (+element.style.opacity > 0) {
+        (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+      }
+    };
+    tick();
+  }
+  function dissolve(a, b) {
+    fadein(document.getElementById(b));
+    document.getElementById(b).style.display = "block";
+    fadeout(document.getElementById(a));
+    setTimeout(() => { document.getElementById(a).style.display = "none"; }, 1000);
+  }
+
+  var index = 0;
+  setTimeout(next_slide, 6000);
+
+  function next_slide() {
+    var next = (index + 12) % 11;
+    dissolve((index + 1).toString(), (next + 1).toString());
+    index = next;
+    setTimeout(next_slide, 6000);
+  }
+  </script>
 </body>
