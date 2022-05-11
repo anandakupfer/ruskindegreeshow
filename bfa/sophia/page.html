@@ -4,9 +4,7 @@
 <style>
 body {
   margin: 0;
-  padding-left: 30px;
-  padding-right: 30px;
-  background-color: #fad0ca;
+  background-color: white;
 }
 @font-face {
   font-family: font_1;
@@ -21,17 +19,23 @@ body {
   src: url(font_3.ttf);
 }
 .paragraph {
+  position: relative;
+  transform: translate(-50%, 0);
+  left: 50%;
   font-family: font_1;
   font-size: 12pt;
-  color: #3d2f42;
+  color: black;
   text-align: justify;
   letter-spacing: -0.5px;
   line-height: 1.3;
+  width: 670px;
+  top: 120px;
+  height: 350px;
 }
 .link {
   font-family: font_2;
   font-size: 12pt;
-  color: #3d2f42;
+  color: black;
   text-align: justify;
   letter-spacing: -0.5px;
   line-height: 1.5;
@@ -43,15 +47,15 @@ body {
 .title {
   font-family: font_3;
   font-size: 24pt;
-  color: #3d2f42;
+  color: black;
   text-align: center;
   letter-spacing: -0.5px;
   line-height: 1;
 }
 .slide {
   position: absolute;
-  width: 50%;
-  height: 400px;
+  width: 670px;
+  height: 500px;
   transform: translate(-50%, 0);
   left: 50%;
 }
@@ -68,7 +72,7 @@ body {
 .image_v {
   position: absolute;
   width: auto;
-  height: 400px;
+  height: 500px;
   transform: translate(-50%, -50%);
   left: 50%;
   top: 50%;
@@ -85,29 +89,31 @@ body {
         <img src="triptych.jpg" class="image_v">
         <p class="caption">Self Portrait – Triptych<br>2022<br>Each canvas 160 x 90 cm<br>Oil on canvas<p>
     </div>
-    <div class="slide" id="2" style="display: none; opacity: 0;">
+    <div class="slide" id="2" style="display: none; opacity: 0; width: 340px;">
         <img src="left.jpg" class="image_v">
         <p class="caption">Self Portrait – Triptych<br>2022<br>Each canvas 160 x 90 cm<br>Oil on canvas<p>
     </div>
-    <div class="slide" id="3" style="display: none; opacity: 0;">
+    <div class="slide" id="3" style="display: none; opacity: 0; width: 340px;">
         <img src="middle.jpg" class="image_v">
         <p class="caption">Self Portrait – Triptych<br>2022<br>Each canvas 160 x 90 cm<br>Oil on canvas<p>
     </div>
-    <div class="slide" id="4" style="display: none; opacity: 0;">
+    <div class="slide" id="4" style="display: none; opacity: 0; width: 340px;">
         <img src="right.jpg" class="image_v">
         <p class="caption">Self Portrait – Triptych<br>2022<br>Each canvas 160 x 90 cm<br>Oil on canvas<p>
     </div>
   </div>
+  <img onclick="previous_slide()" src="left.png" style="cursor: pointer; width: 40px; height: 40px; position: absolute; top: 300px; left: 50%; transform: translate(-420px, 0)">
+  <img onclick="next_slide()" src="right.png" style="cursor: pointer; width: 40px; height: 40px; position: absolute; top: 300px; left: 50%; transform: translate(420px, 0)">
   <p class="paragraph">Sophia Kaur is interested in how we only know our own subjectivity, so her practice focuses on portraying the multiple versions of herself (such as in her mind, photographs, physically, and online). She has worked in a variety of mediums which she presents together on her website, however her desire for honesty and transparency eventually led to her specialising in large, confronting oil paintings of herself in the nude. Sophia is fascinated in the process of looking at herself being looked at, whether it is on video call, a livestream of her bedroom she did for a month or living as a woman aware of her objectification. Her practice asks the viewer questions on the relevance of oil painting in the contemporary world, whether a “true” self is revealed in the various iterations of herself, and if she has escaped the male gaze and taken the power when painting herself. The ambiguity in her work refuses any clear answers on these questions.
   </p>
-  <div style="width: 50%; height: 480px;">
-    <div class="slide">
+  <div style="width: 50%; height: 650px;">
+    <div class="slide" style="width: 490px;">
         <img src="portraits.jpg" class="image_v">
         <p class="caption">Self Portrait – Late Home, and Self Portrait – Hand Resting on my Arm<br>2021<br>Each canvas 186.7 x 105 cm<br>Oil on canvas<p>
     </div>
   </div>
-  <div style="width: 50%; height: 480px;">
-    <div class="slide">
+  <div style="width: 50%; height: 650px;">
+    <div class="slide" style="width: 360px;">
         <img src="portrait.jpg" class="image_v">
         <p class="caption">Self Portrait – Sitting Up<br>2021<br>186.7 x 105 cm<br>Oil on canvas<p>
     </div>
@@ -116,7 +122,7 @@ body {
   function fadein(element) {
     element.style.opacity = 0;
     var tick = function () {
-      element.style.opacity = +element.style.opacity + 0.02;
+      element.style.opacity = +element.style.opacity + 0.05;
       if (+element.style.opacity < 1) {
         (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
       }
@@ -126,7 +132,7 @@ body {
   function fadeout(element) {
     element.style.opacity = 1;
     var tick = function () {
-      element.style.opacity = +element.style.opacity - 0.02;
+      element.style.opacity = +element.style.opacity - 0.05;
       if (+element.style.opacity > 0) {
         (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
       }
@@ -141,27 +147,16 @@ body {
   }
 
   let index = 0;
-  setTimeout(slide, 4000);
 
-  function slide() {
-    index++;
-    console.log(index);
-    if (index > 4) {index = 1}
-    switch (index) {
-      case 1:
-        dissolve("1", "2");
-        break;
-      case 2:
-        dissolve("2", "3");
-        break;
-      case 3:
-        dissolve("3", "4");
-        break;
-      case 4:
-        dissolve("4", "1");
-        break;
-    }
-    setTimeout(slide, 6000);
+  function next_slide() {
+    var next = (index + 5) % 4;
+    dissolve((index + 1).toString(), (next + 1).toString());
+    index = next;
+  }
+  function previous_slide() {
+    var next = (index + 3) % 4;
+    dissolve((index + 1).toString(), (next + 1).toString());
+    index = next;
   }
   </script>
 </body>
