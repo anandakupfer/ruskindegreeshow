@@ -2,7 +2,133 @@
 <html>
 <head>
 <style>
+body {
+  background-color: black;
+}
+.folder {
+  position: fixed;
+  height: 10%;
+  width: auto;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.folder-text {
+  position: absolute;
+  font-weight: bolder;
+  font-family: helvetica;
+  text-align: center;
+  text-decoration: none;
+  transform: translate(-50%, 0);
+  line-height: 1.4;
+  color: white;
+  font-size: 2.2vh;
+  top: calc(10% + 8vh);
+  left: 7vh;
+  cursor: pointer;
+}
+.folder-shadow {
+  position: absolute;
+  font-weight: bolder;
+  font-family: helvetica;
+  text-align: center;
+  line-height: 1.4;
+  transform: translate(calc(-50% - 0.2vh), 0.2vh);
+  color: black;
+  opacity: 0.3;
+  font-size: 2.2vh;
+  top: calc(10% + 8vh);
+  left: 7vh;
+}
 </style>
 </head>
 <body>
+  <img src="background.jpg" style="position: fixed; height: 60%; width: auto; transform: translate(-50%, -50%); left: 50%; top: 50%;">
+  <div class="folder" id="censor_folder" style="top: 30%; left: 40%;">
+    <img src="folder.png" style="position: absolute; width: auto; height: 100%;">
+    <p class="folder-shadow">*****</p>
+    <p class="folder-text">*****</p>
+  </div>
+  <div class="folder" id="petals_folder" style="top: 40%; right: 45%;">
+    <img src="folder.png" style="position: absolute; width: auto; height: 100%;">
+    <p class="folder-shadow">plastic petals</p>
+    <p class="folder-text">plastic petals</p>
+  </div>
+  <div class="folder" id="vanitas_folder" style="top: 56%; left: 32%;">
+    <img src="folder.png" style="position: absolute; width: auto; height: 100%;">
+    <p class="folder-shadow">Vanitas</p>
+    <p class="folder-text">Vanitas</p>
+  </div>
+  <div class="folder" style="top: 60%; right: 40%;">
+    <a href="https://www.instagram.com/mendieta_photography/">
+      <img src="folder.png" style="position: absolute; width: auto; height: 100%;">
+      <p class="folder-shadow">photography</p>
+      <p class="folder-text">photography</p>
+    </a>
+  </div>
+  <div class="folder" id="dice_folder" style="top: 80%; left: 32%;">
+    <img src="folder.png" style="position: absolute; width: auto; height: 100%;">
+    <p class="folder-shadow">Dice Roll</p>
+    <p class="folder-text">Dice Roll</p>
+  </div>
+  <div class="folder" id="ghost_folder" style="top: 78%; right: 37%;">
+    <img src="folder.png" style="position: absolute; width: auto; height: 100%;">
+    <p class="folder-shadow">ghost.img</p>
+    <p class="folder-text">ghost.img</p>
+  </div>
+
+  <div id="lightbox" style="display: none;">
+    <img src="window.png" style="position: fixed; height: 85%; width: auto; transform: translate(-50%, -50%); left: 45%; top: 45%;">
+    <img id="petals" src="petals.png" style="display: none; position: fixed; height: 60%; width: auto; transform: translate(-50%, -50%); left: 45%; top: 45%;">
+    <img id="vanitas" src="vanitas.png" style="display: none; position: fixed; height: 60%; width: auto; transform: translate(-50%, -50%); left: 45%; top: 45%;">
+    <div id="censor" style="display: none;">
+      <img src="censor.jpg" style="position: fixed; height: 42%; width: auto; transform: translate(-125%, -50%); left: 45%; top: 45%;">
+      <img src="jessamy.png" style="position: fixed; height: 42%; width: auto; transform: translate(-10%, -50%); left: 45%; top: 45%;">
+    </div>
+    <img id="ghost" src="ghost img.png" style="display: none; position: fixed; height: 60%; width: auto; transform: translate(-50%, -50%); left: 45%; top: 45%;">
+    <div id="window_hitbox" style="display: none; position: fixed; width: 110vh; height: 75vh; transform: translate(-50%, -50%); left: 45%; top: 42%;"></div>
+    <iframe id="dice" frameBorder="0" src="https://www.youtube.com/embed/jqrbqW4jVwA?enablejsapi=1&version=3&playerapiid=ytplayer" style="display: none; position: fixed; height: 60%; width: auto; transform: translate(-50%, -50%); left: 45%; top: 45%;"></iframe>
+    <div onclick="clear_window" style="cursor: pointer; position: fixed; width: 2vh; height: 2vh; transform: translate(-55vh, -36vh); left: 45%; top: 42%;"></div>
+  </div>
+  <script>
+    var lightbox = false;
+    window.onload = initMouseOver;
+    function initMouseOver()   {
+       var div = document.getElementById("window_hitbox");
+       div.mouseIsOver = false;
+       div.onmouseover = function()   {
+          this.mouseIsOver = true;
+       };
+       div.onmouseout = function()   {
+          this.mouseIsOver = false;
+       };
+    }
+
+    document.addEventListener('click', function (event) {
+      if (lightbox == true && document.getElementById("window_hitbox").mouseIsOver == false) {
+        clear_window();
+      }
+    });
+
+    document.getElementById("petals_folder").addEventListener("click", function() { load_window("petals") }, false);
+    document.getElementById("vanitas_folder").addEventListener("click", function() { load_window("vanitas") }, false);
+    document.getElementById("censor_folder").addEventListener("click", function() { load_window("censor") }, false);
+    document.getElementById("ghost_folder").addEventListener("click", function() { load_window("ghost") }, false);
+    document.getElementById("dice_folder").addEventListener("click", function() { load_window("dice") }, false);
+
+    function load_window(id) {
+      document.getElementById("lightbox").style.display = "block";
+      setTimeout(() => { lightbox = true; }, 100);
+      document.getElementById(id).style.display = "block";
+    }
+    function clear_window() {
+      document.getElementById("lightbox").style.display = "none";
+      document.getElementById("petals").style.display = "none";
+      document.getElementById("vanitas").style.display = "none";
+      document.getElementById("censor").style.display = "none";
+      document.getElementById("ghost").style.display = "none";
+      document.getElementById("dice").style.display = "none";
+      document.getElementById('dice').src += '';
+      lightbox = false;
+    }
+  </script>
 </body>
