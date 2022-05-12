@@ -9,6 +9,19 @@ body {
 </style>
 </head>
 <body>
-  <img src="background.jpg" style="position: fixed; width: 100%; height: auto; top: 50%; transform: translate(0, -50%)">
+  <img src="background.jpg" style="position: fixed; width: 100%; height: 100%; object-fit: cover;">
+  <img src="title.png" id="title" style="position: fixed; width: 100%; height: auto; top: 50%; transform: translate(0, -50%)">
   <a href="https://www.instagram.com/moraitis_art/"><div style="position: fixed; width: 23vw; height: 5vw; top: 50%; left: 67%; transform: translate(0, 2.5vw);"></div></a>
+<script>
+  setTimeout(flash_off, 800);
+
+  function flash_on() {
+    document.getElementById("title").style.opacity = 1;
+    setTimeout(flash_off, 800);
+  }
+  function flash_off() {
+    document.getElementById("title").style.opacity = 0;
+    setTimeout(flash_on, 400);
+  }
+</script>
 </body>
