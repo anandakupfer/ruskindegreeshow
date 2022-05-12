@@ -2,7 +2,122 @@
 <html>
 <head>
 <style>
+body {
+  background-color: #04ff00;
+}
+@font-face {
+  font-family: font_1;
+  src: url(font_1.ttf);
+}
+@font-face {
+  font-family: font_2;
+  src: url(font_2.ttf);
+}
+.caption {
+  text-decoration: none;
+  font-family: font_1;
+  font-size: 1.2vw;
+  color: red;
+  position: fixed;
+  bottom: 0;
+  left: 82vw;
+  width: 15vw;
+  line-height: 1.5;
+}
+.name {
+  text-decoration: none;
+  font-family: font_2;
+  font-size: 5vw;
+  color: red;
+  position: absolute;
+  top: -2vw;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+.link {
+  text-decoration: none;
+  font-family: font_1;
+  font-size: 1.2vw;
+  color: red;
+}
+.link:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
+  <p style="position: fixed; top: 2vw; right: 82vw; width: 20vw; text-align: right; line-height: 2;"><a href="mailto:elliefthompson@gmail.com" class="link">elliefthompson@gmail.com<a><br><a href="https://www.instagram.com/ellie.flt_/" class="link">@ellie.flt_<a></p>
+  <p class="name">Ellie Thompson</p>
+  <img onclick="previous_slide()" src="left.png" style="cursor: pointer; width: 40px; height: 40px; position: fixed; top: 50%; right: 85%;">
+  <img onclick="next_slide()" src="right.png" style="cursor: pointer; width: 40px; height: 40px; position: fixed; top: 50%; left: 85%;">
+  <div id="1">
+    <img src="chickeningout.jpg" style="position: absolute; width: 60vw; left: 50%; top: 13vw; padding: 2vw; transform: translate(-50%, 0);">
+    <img src="chickeningout-detail.jpg" style="position: absolute; width: 60vw; left: 50%; top: 55vw; padding: 2vw; transform: translate(-50%, 0);">
+    <p class="caption">Chickening Out<br>2021</p>
+  </div>
+  <div id="2" style="display: none; opacity: 0;">
+    <img src="goodtimes.jpg" style="position: absolute; width: 60vw; left: 50%; top: 13vw; padding: 2vw; transform: translate(-50%, 0);">
+    <img src="goodtimes-detail.jpg" style="position: absolute; width: 60vw; left: 50%; top: 55vw; padding: 2vw; transform: translate(-50%, 0);">
+    <p class="caption">The Good Times Are Killing Me<br>2022</p>
+  </div>
+  <div id="3" style="display: none; opacity: 0;">
+    <iframe src="https://player.vimeo.com/video/704256000?h=0b52a88f09&title=0&byline=0&portrait=0" frameborder="0" style="position: absolute; width: 60vw; height: 35vw; left: 50%; top: 13vw; padding: 2vw; transform: translate(-50%, 0);" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    <p class="caption">Happy Go Clucky<br>2021</p>
+  </div>
+  <div id="4" style="display: none; opacity: 0;">
+    <iframe src="https://player.vimeo.com/video/704261835?h=1d1e92148a&title=0&byline=0&portrait=0" frameborder="0" style="position: absolute; width: 60vw; height: 35vw; left: 50%; top: 13vw; padding: 2vw; transform: translate(-50%, 0);" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    <p class="caption">So I Hit Him Back<br>2021</p>
+  </div>
+  <div id="5" style="display: none; opacity: 0;">
+    <img src="badsong.jpg" style="position: absolute; width: 28vw; right: 50%; top: 13vw; padding: 2vw;">
+    <img src="badsong-detail.jpg" style="position: absolute; width: 28vw; left: 50%; top: 13vw; padding: 2vw;">
+    <p class="caption">You Wrote, a Bad Song<br>2022</p>
+  </div>
+  <div id="6" style="display: none; opacity: 0;">
+    <img src="pretty.jpg" style="position: absolute; width: 60vw; left: 50%; top: 13vw; padding: 2vw; transform: translate(-50%, 0);">
+    <img src="pretty-detail.jpg" style="position: absolute; width: 60vw; left: 50%; top: 55vw; padding: 2vw; transform: translate(-50%, 0);">
+    <p class="caption">Sitting Pretty<br>2021</p>
+  </div>
+
+<script>
+  function fadein(element) {
+    element.style.opacity = 0;
+    var tick = function () {
+      element.style.opacity = +element.style.opacity + 0.05;
+      if (+element.style.opacity < 1) {
+        (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+      }
+    };
+    tick();
+  }
+  function fadeout(element) {
+    element.style.opacity = 1;
+    var tick = function () {
+      element.style.opacity = +element.style.opacity - 0.05;
+      if (+element.style.opacity > 0) {
+        (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+      }
+    };
+    tick();
+  }
+  function dissolve(a, b) {
+    fadein(document.getElementById(b));
+    document.getElementById(b).style.display = "block";
+    fadeout(document.getElementById(a));
+    setTimeout(() => { document.getElementById(a).style.display = "none"; }, 1000);
+  }
+
+  let index = 0;
+
+  function next_slide() {
+    var next = (index + 7) % 6;
+    dissolve((index + 1).toString(), (next + 1).toString());
+    index = next;
+  }
+  function previous_slide() {
+    var next = (index + 5) % 6;
+    dissolve((index + 1).toString(), (next + 1).toString());
+    index = next;
+  }
+</script>
 </body>
