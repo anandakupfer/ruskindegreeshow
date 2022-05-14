@@ -50,10 +50,9 @@ html {
     <img id="6" src="6.jpg" class="image">
     <img id="7" src="7.jpg" class="image">
     <img id="8" src="8.jpg" class="image">
-    <img id="9" src="9.png" class="image">
-    <img id="10" src="10.jpg" class="image">
-    <img id="11" src="11.jpg" class="image">
-    <img id="12" src="12.jpg" class="image">
+    <img id="9" src="10.jpg" class="image">
+    <img id="10" src="11.jpg" class="image">
+    <img id="11" src="12.jpg" class="image">
     <img src="right.png" onclick="next_slide()" style="position: absolute; width: 8vh; top: 50%; left: 80%; transform: translate(0, -50%); cursor: pointer;">
     <img src="left.png" onclick="previous_slide()" style="position: absolute; width: 8vh; top: 50%; right: 80%; transform: translate(0, -50%); cursor: pointer;">
   </div>
@@ -88,12 +87,12 @@ html {
     let index = 0;
 
     function next_slide() {
-      var next = (index + 13) % 12;
+      var next = (index + 12) % 11;
       dissolve((index + 1).toString(), (next + 1).toString());
       index = next;
     }
     function previous_slide() {
-      var next = (index + 11) % 12;
+      var next = (index + 10) % 11;
       dissolve((index + 1).toString(), (next + 1).toString());
       index = next;
     }
