@@ -2,7 +2,100 @@
 <html>
 <head>
 <style>
+body {
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+@font-face {
+  font-family: font_1;
+  src: url(font_1.ttf);
+}
+.image {
+  position: absolute;
+  width: 50vw;
+  height: 80%;
+  top: 10%;
+  left: 50%;
+  object-fit: contain;
+  transform: translate(-50%, 0);
+  display: none;
+  opacity: 0;
+}
+.link {
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+}
 </style>
 </head>
 <body>
+  <div style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;">
+    <img src="background.jpg" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; object-fit: cover;">
+    <a href="#slideshow"><img src="down.png" style="position: absolute; height: 8%; bottom: 4vh; left: 50%; transform: translate(-50%, 0);"></a>
+    <p style="font-family: font_1; color: #363636; position: absolute; text-align: center; width: 100%; letter-spacing: 2vw; bottom: 50%; font-size: 5vw;">HANNAH BARTON</p>
+    <a href="https://www.instagram.com/hannahlouisaart/" class="link" style="font-family: font_1; color: black; position: absolute; text-align: center; width: 100%; top: calc(50vh - 2vw); font-size: 2vw;">@hannahlouisaart</a>
+    <a href="mailto:hannah@wilkesley.com" class="link" style="font-family: font_1; color: black; position: absolute; text-align: center; width: 100%; top: calc(50vh + 1vw); font-size: 2vw;">hannah@wilkesley.com</a>
+  </div>
+  <section id="slideshow" style="position: absolute; top: 100vh"></section>
+  <div style="position: absolute; background-color: white; width: 100%; height: 100%; top: 100vh; left: 0;">
+    <img id="1" src="1.jpg" class="image" style="display: block; opacity: 1;">
+    <img id="2" src="2.jpg" class="image">
+    <img id="3" src="3.jpg" class="image">
+    <img id="4" src="4.jpg" class="image">
+    <img id="5" src="5.jpg" class="image">
+    <img id="6" src="6.jpg" class="image">
+    <img id="7" src="7.jpg" class="image">
+    <img id="8" src="8.jpg" class="image">
+    <img id="9" src="9.png" class="image">
+    <img id="10" src="10.jpg" class="image">
+    <img id="11" src="11.jpg" class="image">
+    <img id="12" src="12.jpg" class="image">
+    <img src="right.png" onclick="next_slide()" style="position: absolute; width: 8vh; top: 50%; left: 80%; transform: translate(0, -50%); cursor: pointer;">
+    <img src="left.png" onclick="previous_slide()" style="position: absolute; width: 8vh; top: 50%; right: 80%; transform: translate(0, -50%); cursor: pointer;">
+  </div>
+  <script>
+    function fadein(element) {
+      element.style.opacity = 0;
+      var tick = function () {
+        element.style.opacity = +element.style.opacity + 0.05;
+        if (+element.style.opacity < 1) {
+          (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+        }
+      };
+      tick();
+    }
+    function fadeout(element) {
+      element.style.opacity = 1;
+      var tick = function () {
+        element.style.opacity = +element.style.opacity - 0.05;
+        if (+element.style.opacity > 0) {
+          (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+        }
+      };
+      tick();
+    }
+    function dissolve(a, b) {
+      fadein(document.getElementById(b));
+      document.getElementById(b).style.display = "block";
+      fadeout(document.getElementById(a));
+      setTimeout(() => { document.getElementById(a).style.display = "none"; }, 1000);
+    }
+
+    let index = 0;
+
+    function next_slide() {
+      var next = (index + 13) % 12;
+      dissolve((index + 1).toString(), (next + 1).toString());
+      index = next;
+    }
+    function previous_slide() {
+      var next = (index + 11) % 12;
+      dissolve((index + 1).toString(), (next + 1).toString());
+      index = next;
+    }
+  </script>
 </body>
