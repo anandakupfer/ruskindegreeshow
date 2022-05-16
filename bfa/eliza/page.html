@@ -2,7 +2,121 @@
 <html>
 <head>
 <style>
+body{
+  padding: 0;
+  margin: 0;
+}
+.image{
+  position: fixed;
+  width: 100vw;
+  height: 75vh;
+  top: 10vh;
+  object-fit: contain;
+}
+@font-face {
+  font-family: font_1;
+  src: url(font_1.ttf);
+}
+.caption {
+  font-family: font_1;
+  font-size: calc(1.8vh);
+  position: fixed;
+  top: 85%;
+  text-align: left;
+  width: 50%;
+  transform: translate(-50%, 0);
+  left: 50vw;
+}
+.slide {
+  opacity: 0;
+  display: none;
+}
 </style>
 </head>
 <body>
+  <p style="font-family: font_1; font-size: calc(3vh); position: fixed; top: 0; text-align: center; width: 100%">ELIZA OWEN</p>
+  <div id="1">
+    <img src="1.jpg" class="image">
+    <p class="caption"><i>Light flecks through the trees / Vertical sticks with reflecting glass</i><br>Print<br>Cut into copper margin, with folded left over copper characters put through the press 12 times. <br>57 x 75.5 cm<br>2022.</p>
+  </div>
+  <div id="2" class="slide">
+    <img src="2.jpg" id="video_1" onclick="play_video()" class="image" style="cursor: pointer">
+    <iframe id="video_2" src="https://player.vimeo.com/video/710060043?h=0b52a88f09&title=0&byline=0&portrait=0" frameborder="0"  allow="autoplay; fullscreen; picture-in-picture" allowfullscreen class="image" style="display: none;"></iframe>
+    <p class="caption"><i>I Can See The Sea … You Can’t See The Wood Through The Trees?</i><br><br>Installation, Sticks, glass, glass containers, fabric, and projection of ‘Floating’.<br><br>2022.</p>
+  </div>
+  <div id="3" class="slide">
+    <img src="3.png" class="image">
+    <p class="caption"><i>Turning in Spaces, Remembered.</i><br><br>Acrylic on Canvas.<br>68 x 79 cm<br>2021.</p>
+  </div>
+  <div id="4" class="slide">
+    <img src="4.jpg" class="image">
+    <p class="caption"><i>No Fixed Configuration across Horizontal planes…</i><br>Installation on my studio wall, matchsticks, glass, glass hinges, zip tyes, Dust Catapults, pained wood, aluminium, copper, thread, pins, small screens and flickering images. <br>2.10 x 3 m<br>2022.</p>
+  </div>
+  <div id="5" class="slide">
+    <img src="5.png" style="position: fixed; width: 52vw; transform: translate(0, -50%); top: 45vh; left: 0;">
+    <img src="5-1.png" style="position: fixed; width: 22.36vw; transform: translate(0, -50%); top: 45vh; left: 53.66vw;">
+    <img src="5-2.png" style="position: fixed; width: 22.36vw; transform: translate(0, -50%); top: 45vh; right: 0;">
+    <p class="caption"><i>Floating</i><br><br>Film of an installation of Plaster Cast Glass Containers and Polystyrene Glass Containers in the Sea. <br>Mid day,  as the Tide came in, Whitstable.<br>2021.</p>
+  </div>
+  <img src="left.png" onclick="previous_slide()" style="position: fixed; height: 4%; right: 87%; bottom: 5vh; cursor: pointer">
+  <img src="right.png" onclick="next_slide()" style="position: fixed; height: 4%; left: 87%; bottom: 5vh; cursor: pointer">
+  <script>
+    function fadein(element) {
+      element.style.opacity = 0;
+      var tick = function () {
+        element.style.opacity = +element.style.opacity + 0.05;
+        if (+element.style.opacity < 1) {
+          (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+        }
+      };
+      tick();
+    }
+    function fadeout(element) {
+      element.style.opacity = 1;
+      var tick = function () {
+        element.style.opacity = +element.style.opacity - 0.05;
+        if (+element.style.opacity > 0) {
+          (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+        }
+      };
+      tick();
+    }
+    function dissolve(a, b) {
+      fadein(document.getElementById(b));
+      document.getElementById(b).style.display = "block";
+      fadeout(document.getElementById(a));
+      setTimeout(() => { document.getElementById(a).style.display = "none"; }, 1000);
+    }
+
+    let index = 0;
+    var video = false;
+
+    function next_slide() {
+      if (video) {
+        video = false;
+        document.getElementById("video_2").style.display = "none";
+        document.getElementById("video_1").style.display = "block";
+        document.getElementById('video_2').src += '';
+      }
+      var next = (index + 6) % 5;
+      dissolve((index + 1).toString(), (next + 1).toString());
+      index = next;
+    }
+    function previous_slide() {
+      if (video) {
+        video = false;
+        document.getElementById("video_2").style.display = "none";
+        document.getElementById("video_1").style.display = "block";
+        document.getElementById('video_2').src += '';
+      }
+      var next = (index + 4) % 5;
+      dissolve((index + 1).toString(), (next + 1).toString());
+      index = next;
+    }
+    function play_video() {
+      document.getElementById("video_2").style.display = "block";
+      document.getElementById("video_1").style.display = "none";
+      video = true;
+    }
+  </script>
 </body>
