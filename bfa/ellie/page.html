@@ -61,11 +61,11 @@ body {
     <p class="caption">The Good Times Are Killing Me<br>2022</p>
   </div>
   <div id="3" style="display: none; opacity: 0;">
-    <iframe src="https://player.vimeo.com/video/704256000?h=0b52a88f09&title=0&byline=0&portrait=0" frameborder="0" style="position: absolute; width: 60vw; height: 35vw; left: 50%; top: 13vw; padding: 2vw; transform: translate(-50%, 0);" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    <iframe id="video_1" src="https://player.vimeo.com/video/704256000?h=0b52a88f09&title=0&byline=0&portrait=0" frameborder="0" style="position: absolute; width: 60vw; height: 35vw; left: 50%; top: 13vw; padding: 2vw; transform: translate(-50%, 0);" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     <p class="caption">Happy Go Clucky<br>2021</p>
   </div>
   <div id="4" style="display: none; opacity: 0;">
-    <iframe src="https://player.vimeo.com/video/704261835?h=1d1e92148a&title=0&byline=0&portrait=0" frameborder="0" style="position: absolute; width: 60vw; height: 35vw; left: 50%; top: 13vw; padding: 2vw; transform: translate(-50%, 0);" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    <iframe id="video_2" src="https://player.vimeo.com/video/704261835?h=1d1e92148a&title=0&byline=0&portrait=0" frameborder="0" style="position: absolute; width: 60vw; height: 35vw; left: 50%; top: 13vw; padding: 2vw; transform: translate(-50%, 0);" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     <p class="caption">So I Hit Him Back!<br>2021</p>
   </div>
   <div id="5" style="display: none; opacity: 0;">
@@ -110,11 +110,23 @@ body {
   let index = 0;
 
   function next_slide() {
+    if (index == 2) {
+      document.getElementById('video_1').src += '';
+    }
+    if (index == 3) {
+      document.getElementById('video_2').src += '';
+    }
     var next = (index + 7) % 6;
     dissolve((index + 1).toString(), (next + 1).toString());
     index = next;
   }
   function previous_slide() {
+    if (index == 2) {
+      document.getElementById('video_1').src += '';
+    }
+    if (index == 3) {
+      document.getElementById('video_2').src += '';
+    }
     var next = (index + 5) % 6;
     dissolve((index + 1).toString(), (next + 1).toString());
     index = next;
