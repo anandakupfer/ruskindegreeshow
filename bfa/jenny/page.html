@@ -2,7 +2,86 @@
 <html>
 <head>
 <style>
+body {
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+  font-family: font_1;
+  src: url(font_1.ttf);
+}
+@font-face {
+  font-family: font_2;
+  src: url(font_2.ttf);
+}
+a {
+  font-size: calc(0.9vw + 0.8vh); text-align: justify; color: #ed68b1; font-family: font_1; text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.image {
+  position: fixed;
+  width: calc(70vw - 3vh);
+  display:none;
+  opacity: 0;
+  height: 96%;
+  left: 2vh;
+  top: 2vh;
+  object-fit: contain;
+}
 </style>
 </head>
 <body>
+  <div style="position: fixed; width: calc(24vw); height: 100vh; right: 3vw; top: 0;">
+    <p style="position: absolute; width: 100%; font-size: calc(2vw + 1.5vh); text-align: center; color: #ed68b1; font-family: font_2; top: 8%;">Jenny Gill</p>
+    <p style="position: absolute; width: 100%; font-size: calc(0.9vw + 0.8vh); text-align: justify; color: #ed68b1; font-family: font_1; top: 30%; text-decoration: none;">Jenny is portrait painter from Preston, Lancashire, who embraces femininity in all its glorious forms. She crops her paintings to show off certain attributes of the female body, imitating how the male gaze peruses over the curves, contours, and shapely landscape of the female figure. Her most recent series, Good Hair Day, fetishizes a woman’s hair from behind, making her bouncy blow dry almost erotic, as the mystique of not knowing her identity and lusciousness of her cascading curls creates a sexual fantasy.<br><br>
+      <a href="https://www.instagram.com/paintings.by.jennifer/">@paintings.by.jennifer</a><br><br>
+      <a href="mailto:jennygill2000@gmail.com">jennygill2000@gmail.com</a></p>
+  </div>
+  <img src="1.png" style="display: block; opacity: 1;" class="image" id="1">
+  <img src="2.png" class="image" id="2">
+  <div id="3" style="display: none; opacity: 0;">
+    <img src="3.png" class="image" style="width: calc(29.5vw - 1.5vh); display: block; opacity: 1;">
+    <img src="4.png" class="image" style="width: calc(40.7vw - 1.5vh); left: calc(29.5vw - 3vh); display: block; opacity: 1;">
+  </div>
+  <img src="5.png" class="image" id="4">
+  <script>
+  function fadein(element) {
+    element.style.opacity = 0;
+    var tick = function () {
+      element.style.opacity = +element.style.opacity + 0.02;
+      if (+element.style.opacity < 1) {
+        (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+      }
+    };
+    tick();
+  }
+  function fadeout(element) {
+    element.style.opacity = 1;
+    var tick = function () {
+      element.style.opacity = +element.style.opacity - 0.02;
+      if (+element.style.opacity > 0) {
+        (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+      }
+    };
+    tick();
+  }
+  function dissolve(a, b) {
+    fadein(document.getElementById(b));
+    document.getElementById(b).style.display = "block";
+    fadeout(document.getElementById(a));
+    setTimeout(() => { document.getElementById(a).style.display = "none"; }, 1000);
+  }
+
+  let index = 0;
+  setTimeout(next_slide, 5000);
+
+  function next_slide() {
+    var next = (index + 5) % 4;
+    dissolve((index + 1).toString(), (next + 1).toString());
+    index = next;
+    setTimeout(next_slide, 5000);
+  }
+  </script>
 </body>
